@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #4caf50, #81c784);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen bg-gray-100">
+    <!-- Login Form -->
+    <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-md">
+        <h1 class="text-2xl font-bold text-gray-700 text-center mb-4">Welcome to Smeef</h1>
+        <p class="text-gray-500 text-center mb-6">Login to access your dashboard</p>
+        <form id="login-form" class="space-y-6">
+            <!-- Full Name Input -->
+            <div>
+                <label for="fullname" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input 
+                    type="text" 
+                    id="fullname" 
+                    placeholder="Enter your full name" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Email Input -->
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter your email" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Password Input -->
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter your password" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+              <!-- Remember Me & Forgot Password -->
+           <div class="flex items-center justify-between">
+            <label class="flex items-center">
+                <input 
+                    type="checkbox" 
+                    id="remember-me" 
+                    class="h-4 w-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
+                />
+                <span class="ml-2 text-sm text-gray-600">Remember Me</span>
+            </label>
+            <!-- Forgot Password -->
+        <div class="text-center mt-4">
+            <a href="/smeef-project/frontend/forgotpassword.html" class="text-sm text-green-500 hover:underline">
+                Forgot Password?
+            </a>
+        </div>
+        <!-- Message Display -->
+        <p id="message" class="mt-4 text-center text-sm text-red-500 hidden"></p>
+    </div>
+            <!-- Submit Button -->
+            <button 
+                type="submit"
+                class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition"
+            >
+                Login
+            </button>
+        </form>
+        <!-- Message Display -->
+        <p id="message" class="mt-4 text-center text-sm text-red-500 hidden"></p>
+    </div>
+
+    <script>
+        // Login Form Functionality
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Simulated Login Logic
+            if (email === 'admin@smeef.com' && password === 'admin123') {
+                alert(`Welcome, ${fullname}! Redirecting to Admin Dashboard...`);
+                window.location.href = '/dashboard/admin.html';
+            } else if (email === 'mentor@smeef.com' && password === 'mentor123') {
+                alert(`Welcome, ${fullname}! Redirecting to Mentor Dashboard...`);
+                window.location.href = '/dashboard/mentor.html';
+            } else if (email === 'singlemother@smeef.com' && password === 'mother123') {
+                alert(`Welcome, ${fullname}! Redirecting to Single Mother Dashboard...`);
+                window.location.href = '/dashboard/single-mother.html';
+            } else {
+                const message = document.getElementById('message');
+                message.textContent = 'Invalid email or password. Please try again.';
+                message.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>

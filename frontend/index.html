@@ -39,7 +39,11 @@
                 <a href="#features" class="text-gray-700 hover:text-blue-600 transition font-medium">Features</a>
                 <a href="#impact" class="text-gray-700 hover:text-blue-600 transition font-medium">Impact</a>
                 <a href="#contact" class="text-gray-700 hover:text-blue-600 transition font-medium">Contact</a>
-                <a href="#cta" class="bg-gradient-to-r from-blue-600 to-green-400 text-white px-5 py-2 rounded-full shadow-lg hover:shadow-xl transition font-semibold">Join Us</a>
+                <a href="/smeef-project/frontend/register.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Register</a>
+                <a href="/smeef-project/frontend/login.html" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                    Login</a>
+                
             </div>
         </div>
     </nav>
@@ -95,15 +99,15 @@
             <p class="text-gray-600 leading-relaxed max-w-2xl mx-auto mb-8">Since its inception, Smeef has positively influenced lives by providing essential tools and opportunities to single mothers worldwide. Join us and help create a legacy of empowerment.</p>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="p-8 bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition">
-                    <h3 class="text-2xl font-bold text-green-600">100+</h3>
+                    <h3 id="counter1" class="text-2xl font-bold text-green-600">0</h3>
                     <p class="text-gray-600">Mothers Trained</p>
                 </div>
                 <div class="p-8 bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition">
-                    <h3 class="text-2xl font-bold text-green-600">50+</h3>
+                    <h3 id="counter2" class="text-2xl font-bold text-green-600">0+</h3>
                     <p class="text-gray-600">Jobs Created</p>
                 </div>
                 <div class="p-8 bg-gray-100 rounded-xl shadow-md hover:shadow-lg transition">
-                    <h3 class="text-2xl font-bold text-green-600">30+</h3>
+                    <h3 id="counter3" class="text-2xl font-bold text-green-600">0+</h3>
                     <p class="text-gray-600">Businesses Started</p>
                 </div>
             </div>
@@ -128,6 +132,30 @@
     <footer class="py-6 bg-gray-800 text-white text-center rounded-t-lg">
         <p>&copy; 2024 Smeef. All rights reserved. Designed with ❤️ for empowerment.</p>
     </footer>
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const counters = [
+                { id: "counter1", target: 100 }, // Target for "Mothers Trained"
+                { id: "counter2", target: 50 },  // Target for "Jobs Created"
+                { id: "counter3", target: 30 }   // Target for "Businesses Started"
+            ];
+    
+            counters.forEach(({ id, target }) => {
+                const counterElement = document.getElementById(id);
+                let count = 0;
+                const duration = 2000; // Animation duration in milliseconds
+                const interval = Math.floor(duration / target);
+    
+                const counter = setInterval(() => {
+                    count++;
+                    counterElement.textContent = count + "+"; // Append the "+" sign
+                    if (count >= target) {
+                        clearInterval(counter); // Stop the interval when target is reached
+                    }
+                }, interval);
+            });
+        });
+    </script>
+    
 </body>
 </html>

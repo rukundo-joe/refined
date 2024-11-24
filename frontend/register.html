@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom right, #4caf50, #81c784);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+    <!-- Registration Form -->
+    <div class="w-full max-w-sm p-4 bg-white rounded-lg shadow-md">
+        <h1 class="text-xl font-bold text-gray-700 text-center mb-2">Register to Smeef</h1>
+        <p class="text-gray-500 text-center mb-4 text-sm">Join as an Admin, Mentor, or Single Mother</p>
+        <form id="registration-form" class="space-y-4">
+            <!-- Full Name -->
+            <div>
+                <label for="full-name" class="block text-sm text-gray-700">Full Name</label>
+                <input 
+                    type="text" 
+                    id="full-name" 
+                    placeholder="Enter your full name" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Email -->
+            <div>
+                <label for="email" class="block text-sm text-gray-700">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    placeholder="Enter your email" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Password -->
+            <div>
+                <label for="password" class="block text-sm text-gray-700">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    placeholder="Enter your password" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Confirm Password -->
+            <div>
+                <label for="confirm-password" class="block text-sm text-gray-700">Confirm Password</label>
+                <input 
+                    type="password" 
+                    id="confirm-password" 
+                    placeholder="Confirm your password" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                />
+            </div>
+            <!-- Role Selection -->
+            <div>
+                <label for="role" class="block text-sm text-gray-700">Register As</label>
+                <select 
+                    id="role" 
+                    required
+                    class="mt-1 p-2 w-full border rounded-md text-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
+                >
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="admin">Admin</option>
+                    <option value="mentor">Mentor</option>
+                    <option value="singleMother">Single Mother</option>
+                </select>
+            </div>
+            <!-- Submit Button -->
+            <button 
+                type="submit"
+                class="w-full bg-green-500 text-white py-2 rounded text-sm hover:bg-green-600 transition"
+            >
+                Register
+            </button>
+        </form>
+        <!-- Login Link -->
+        <p class="text-center text-sm text-gray-600 mt-2">
+            Already have an account? 
+            <a href="/smeef-project/frontend/login.html" class="text-green-500 hover:underline">Login</a>
+        </p>
+        <!-- Message Display -->
+        <p id="message" class="mt-2 text-center text-sm text-red-500 hidden"></p>
+    </div>
+
+    <script>
+        // Registration Form Functionality
+        document.getElementById('registration-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('full-name').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const role = document.getElementById('role').value;
+
+            if (password !== confirmPassword) {
+                const message = document.getElementById('message');
+                message.textContent = 'Passwords do not match!';
+                message.classList.remove('hidden');
+                return;
+            }
+
+            // Simulate Backend API Call
+            alert(`Registration Successful!\nWelcome, ${fullName}! Role: ${role}`);
+            window.location.href = '../login.html';
+        });
+    </script>
+</body>
+</html>
